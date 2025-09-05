@@ -1,21 +1,19 @@
 {
   "compilerOptions": {
-    /* === Nivel de JavaScript que usaremos === */
-    "target": "es2020",                  // Para async/await y funciones modernas
-    "module": "commonjs",                // Usamos módulos ESM modernos
-    "moduleResolution": "node",      // Resolver imports estilo Node moderno
-
-    /* === Opciones de seguridad y buenas prácticas === */
-    "strict": true,                      // Reglas estrictas de TypeScript
-    "esModuleInterop": true,             // Compatibilidad entre import/export y require
+    "target": "ES2020",
+    "module": "commonjs",
+    "lib": ["ES2020"],
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true,                // Saltar revisión de definiciones de librerías
-
-
-    /* === Carpetas === */
-    "outDir": "dist",                    // Salida de compilación
-    "rootDir": "src"                     // Código fuente principal
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true
   },
-  "include": ["src"],                    // Incluir solo tu carpeta src
-  "exclude": ["node_modules", "dist"]    // Ignorar dependencias y compilados
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }

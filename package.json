@@ -1,33 +1,30 @@
 {
-  "name": "salvar-al-mundo",
+  "name": "salvar-mundo",
   "version": "1.0.0",
-  "description": "Juego de consola en Typescript para salvar al mundo de Godzilla",
-  "homepage": "https://github.com/Bestia06/salvar-al-mundo#readme",
-  "bugs": {
-    "url": "https://github.com/Bestia06/salvar-al-mundo/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Bestia06/salvar-al-mundo.git"
-  },
-  "license": "ISC",
-  "author": "Bestia06",
-  "type": "module",
-  "main": "index.js",
+  "description": "Juego épico de supervivencia contra Godzilla - El destino del mundo está en tus manos",
+  "main": "dist/index.js",
   "scripts": {
-    "dev": "ts-node src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsc && node dist/index.js",
+    "build": "tsc",
+    "start": "node dist/index.js"
   },
+  "keywords": [
+    "godzilla",
+    "survival",
+    "game",
+    "typescript",
+    "console"
+  ],
+  "author": "Soldado de la Humanidad",
+  "license": "MIT",
   "dependencies": {
-    "chalk": "^5.6.0",
+    "chalk": "^4.1.2",
     "play-sound": "^1.1.6",
     "readline-sync": "^1.4.10"
   },
   "devDependencies": {
-    "@types/node": "^20.19.12",
-    "@types/readline-sync": "^1.4.8",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.9.2"
+    "@types/node": "^18.15.0",
+    "@types/readline-sync": "^1.4.4",
+    "typescript": "^5.0.0"
   }
-  
 }

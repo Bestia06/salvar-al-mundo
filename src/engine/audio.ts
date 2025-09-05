@@ -1,26 +1,97 @@
-import player from "play-sound";
-import fs from "fs";
-import { AUDIO_ATTACK, AUDIO_ROAR, AUDIO_ROCKET } from "../config/constants.js";
+// @ts-ignore
+import * as player from 'play-sound';
+import * as path from 'path';
 
-const p = player({});
+export class AudioManager {
+    private player: any;
+    private soundsPath: string;
 
-// Utilidad genérica
-function playSafe(path: string, label: string) {
-  try {
-    if (!fs.existsSync(path)) {
-      console.warn(`[Audio] Archivo no encontrado: ${path} (${label})`);
-      return;
+    constructor() {
+        this.player = player;
+        this.soundsPath = path.join(__dirname, '../../sounds');
     }
-    p.play(path, (err) => {
-      if (err) console.warn(`[Audio] Error al reproducir ${label}:`, err.message);
-    });
-  } catch (e) {
-    console.warn(`[Audio] Error inesperado en ${label}:`, (e as Error).message);
-  }
-}
 
-export const SFX = {
-  roar: () => playSafe(AUDIO_ROAR, "Rugido"),
-  rocket: () => playSafe(AUDIO_ROCKET, "Propulsor/Despegue"),
-  attack: () => playSafe(AUDIO_ATTACK, "Ataque"),
-};
+    /**
+     * Reproduce el rugido de Godzilla
+     */
+    async playGodzillaRoar(): Promise<void> {
+        try {
+            const soundPath = path.join(this.soundsPath, 'roar.mp3');
+            console.log('🔊 Reproduciendo rugido de Godzilla...');
+            this.player(soundPath, (err: any) => {
+                if (err) {
+                    console.log('⚠️  No se pudo reproducir el rugido (archivo no encontrado)');
+                }
+            });
+        } catch (error) {
+            console.log('⚠️  Error al reproducir audio de rugido');
+        }
+    }
+
+    /**
+     * Reproduce el sonido de encendido de propulsores
+     */
+    async playRocketIgnition(): Promise<void> {
+        try {
+            const soundPath = path.join(this.soundsPath, 'rocket.mp3');
+            console.log('🚀 Reproduciendo encendido de propulsores...');
+            this.player(soundPath, (err: any) => {
+                if (err) {
+                    console.log('⚠️  No se pudo reproducir el sonido de propulsores (archivo no encontrado)');
+                }
+            });
+        } catch (error) {
+            console.log('⚠️  Error al reproducir audio de propulsores');
+        }
+    }
+
+    /**
+     * Reproduce el sonido de ataque
+     */
+    async playAttackSound(): Promise<void> {
+        try {
+            const soundPath = path.join(this.soundsPath, 'attack.mp3');
+            console.log('💥 Reproduciendo sonido de ataque...');
+            this.player(soundPath, (err: any) => {
+                if (err) {
+                    console.log('⚠️  No se pudo reproducir el sonido de ataque (archivo no encontrado)');
+                }
+            });
+        } catch (error) {
+            console.log('⚠️  Error al reproducir audio de ataque');
+        }
+    }
+
+    /**
+     * Reproduce el sonido de despegue
+     */
+    async playLaunchSound(): Promise<void> {
+        try {
+            const soundPath = path.join(this.soundsPath, 'launch.mp3');
+            console.log('🚀 Reproduciendo sonido de despegue...');
+            this.player(soundPath, (err: any) => {
+                if (err) {
+                    console.log('⚠️  No se pudo reproducir el sonido de despegue (archivo no encontrado)');
+                }
+            });
+        } catch (error) {
+            console.log('⚠️  Error al reproducir audio de despegue');
+        }
+    }
+
+    /**
+     * Reproduce un sonido personalizado
+     */
+    async playCustomSound(filename: string): Promise<void> {
+        try {
+            const soundPath = path.join(this.soundsPath, filename);
+            this.player(soundPath, (err: any) => {
+                if (err) {
+                    console.log(`⚠️  No se pudo reproducir ${filename} (archivo no encontrado)`);
+                }
+            });
+        } catch (error) {
+            console.log(`⚠️  Error al reproducir ${filename}`);
+        }
+    }
+}
