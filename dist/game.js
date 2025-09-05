@@ -459,7 +459,7 @@ class Game {
         const opciones = [
             '🔧 Consejo sobre propulsores',
             '📐 Consejo sobre distancia',
-            '🔐 Consejo sobre código de seguridad',
+            '🔐 Consejo sobre codigo de seguridad',
             '⚔️  Consejo sobre combate',
             '🚀 Consejo sobre escape',
             '🤖 Consejo general'
